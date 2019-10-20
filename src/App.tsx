@@ -1,26 +1,27 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import MainLayout from "./layout/MainLayout";
 
-const App: React.FC = () => {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+import ImagesGrid from "./ImagesGrid";
+import Details from "./Details";
+import TopBar from "./TopBar";
+import { createGlobalStyle } from "styled-components";
+
+const GlobalStyle = createGlobalStyle`
+  body {
+    font-family: Helvetica, Arial, Sans-Serif;
+    background: #e4ebf1;
+  }
+`;
+
+const App: React.FC = () => (
+  <>
+    <MainLayout
+      renderContent={() => <ImagesGrid />}
+      renderSidebar={() => <Details />}
+      renderTopbar={() => <TopBar />}
+    />
+    <GlobalStyle />
+  </>
+);
 
 export default App;
