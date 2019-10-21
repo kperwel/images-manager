@@ -1,9 +1,8 @@
-import { createStore, applyMiddleware } from 'redux';
-import thunk from 'redux-thunk';
+import { createStore, applyMiddleware } from "redux";
+import thunk from "redux-thunk";
 
-import reducer from "./images/reducer";
+import { imageReducer } from "./images/reducer";
 
-
-export default function configureStore(initialState={}) {
- return createStore(reducer, initialState, applyMiddleware(thunk));
+export default function configureStore() {
+  return createStore(imageReducer, applyMiddleware(thunk));
 }

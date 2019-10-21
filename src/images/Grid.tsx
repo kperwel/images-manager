@@ -1,13 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import Grid from "../components/grid";
 import ImageView from "../components/image";
 import Tile from "../components/tile";
 
-import { createMock } from "../api/mock";
+import { useSelector, useDispatch } from "react-redux";
+import { ImagesState } from "./types";
+
+import { createActions } from "../images/actions";
+import { createApi } from "../api/api";
 
 const List = () => {
-  const images = createMock();
+  const images = useSelector((state: ImagesState) => state.list.map((id) => state.items[id]));
+  const dispatch = useDispatch();
+  const actions = createActions(createApi());
+  useEffect(()=> {
+    dispatch(actions.getImages());
+  }, [])
 
   return (
     <Grid

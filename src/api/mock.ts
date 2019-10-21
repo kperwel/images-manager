@@ -1,4 +1,4 @@
-import { Image } from "./types";
+import { Image } from "../images/types";
 
 export const createMock = (): Image[] => {
   return Array(10)
