@@ -1,10 +1,11 @@
-import { createMock } from "./mock";
-import { Image } from "./types";
+// import { createMock } from "./mock";
+import { Id, Image } from '../images/types';
 
-interface Api {
-  get: <T>(id: T) => Promise<T extends string ? Image : Image[]>;
-  delete: (id: string) => Promise<{}>;
-  patch: (id: string, properties: Partial<Image>) => Image;
+export interface Api {
+  get: (id: Id) => Promise<Image>;
+  list: () => Promise<Image[]>;
+  delete: (id: Id) => Promise<Image>;
+  patch: (id: Id, properties: Partial<Image>) => Promise<Image>;
 }
 
 // const createApi = (): Api => {

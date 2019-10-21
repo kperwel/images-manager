@@ -6,7 +6,9 @@ interface ImageProps {
     title: string,
 }
 
-const ImageStyled = styled.img``;
+const ImageStyled = styled.img`
+    width: 100%;
+`;
 
 const Image = ({url, title}: ImageProps ) => <ImageStyled alt={title} title={title} src={url}/>;
 

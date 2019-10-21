@@ -1,12 +1,12 @@
 import React from "react";
 
-import Grid from "./components/grid";
-import ImageView from "./components/image";
-import Tile from "./components/tile";
+import Grid from "../components/grid";
+import ImageView from "../components/image";
+import Tile from "../components/tile";
 
-import { createMock } from "./api/mock";
+import { createMock } from "../api/mock";
 
-const ImagesGrid = () => {
+const List = () => {
   const images = createMock();
 
   return (
@@ -22,4 +22,4 @@ const ImagesGrid = () => {
   );
 };
 
-export default ImagesGrid;
+export default List;

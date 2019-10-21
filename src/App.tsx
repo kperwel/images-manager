@@ -1,10 +1,13 @@
 import React from "react";
-import MainLayout from "./layout/MainLayout";
-
-import ImagesGrid from "./ImagesGrid";
-import Details from "./Details";
-import TopBar from "./TopBar";
 import { createGlobalStyle } from "styled-components";
+import { Provider } from "react-redux";
+
+import configureStore from "./store";
+
+import MainLayout from "./layout/MainLayout";
+import Grid from "./images/Grid";
+import Details from "./images/Details";
+import TopBar from "./TopBar";
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -14,14 +17,14 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 const App: React.FC = () => (
-  <>
+  <Provider store={configureStore()}>
     <MainLayout
-      renderContent={() => <ImagesGrid />}
+      renderContent={() => <Grid />}
       renderSidebar={() => <Details />}
       renderTopbar={() => <TopBar />}
     />
     <GlobalStyle />
-  </>
+  </Provider>
 );
 
 export default App;

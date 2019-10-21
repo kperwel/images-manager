@@ -7,11 +7,17 @@ interface MainLayoutProps {
   renderTopbar: () => ReactNode;
 }
 
-const ContainerStyled = styled.div``;
+const ContainerStyled = styled.div`
+`;
 const ContentStyled = styled.div`
   padding: 10px;
+  margin-top: 50px;
 `;
-const TopbarStyled = styled.div``;
+const TopbarStyled = styled.div`
+  position: fixed;
+  width: 100%;
+  z-index: 1;
+`;
 const SidebarStyled = styled.div``;
 const ContentContainerStyled = styled.div`
   width: 100%;
