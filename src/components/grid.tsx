@@ -15,7 +15,7 @@ const GridStyled = styled.div`
 
 const GridItemStyled = styled.div`
   padding: 10px;
-  width: 33%;
+  width: calc(100% / 3);
 `;
 
 function Grid<T extends {}>({ items, renderItem }: GridProps<T>) {

@@ -36,6 +36,7 @@ export function imageReducer(
   state = initialState,
   action: ImageActionTypes
 ): ImagesState {
+    console.log(action.type);
   switch (action.type) {
     case GET_IMAGE_REQUEST:
       return {
@@ -70,7 +71,9 @@ export function imageReducer(
         status: { ...state.status, [action.payload]: IMAGE_STATUS.REMOVING }
       };
     case REMOVE_IMAGE_SUCCESS:
-      return { ...state };
+            const newItems = { ...state.items };
+            delete newItems[action.payload];
+      return { ...state, list: state.list.filter(id => id !== action.payload), items: newItems };
     case REMOVE_IMAGE_ERROR:
       return { ...state };
     case RENAME_IMAGE_REQUEST:

@@ -4,6 +4,7 @@ import styled, { css } from "styled-components";
 interface TileProps {
   children: React.ReactNode;
   title: string;
+  onClick?: () => void;
   selected?: boolean;
 }
 
@@ -29,8 +30,8 @@ const DescriptionStyled = styled.div`
   padding: 10px;
 `;
 
-const Tile = ({ children, title, selected = false }: TileProps) => (
-  <TileStyled selected={selected}>
+const Tile = ({ children, title, onClick, selected = false }: TileProps) => (
+  <TileStyled selected={selected} onClick={onClick}>
     {children}
     <DescriptionStyled>
       <TitleStyled>{title}</TitleStyled>

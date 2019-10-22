@@ -19,7 +19,6 @@ export type Error = string;
 
 export enum IMAGE_STATUS {
   FETCHING,
-  FETCHING_DETAILS,
   READY,
   PATCHING,
   REMOVING,

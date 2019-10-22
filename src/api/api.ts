@@ -10,17 +10,31 @@ export interface Api {
 
 export const createApi = (mock = createMock()): Api => {
   return {
-    get: (id: Id) => Promise.resolve(mock.find(i => i.id === id)!),
-    list: () => Promise.resolve(mock),
+    get: (id: Id) => {
+      return new Promise(resolve => {
+        setTimeout(() => resolve(mock.find(i => i.id === id)!), 1000);
+      });
+    },
+    list: () => {
+      return new Promise(resolve => {
+        setTimeout(() => resolve(mock), 300);
+      });
+    },
     delete: (id: Id) => {
       const image = mock.find(i => i.id === id)!;
       mock = mock.filter(i => i !== image);
-      return Promise.resolve(image);
+
+      return new Promise(resolve => {
+        setTimeout(() => resolve(image), 300);
+      });
     },
     patch: (id: Id, properties: Partial<Image>) => {
       const image = mock.find(i => i.id === id)!;
       Object.assign(image, properties);
-      return Promise.resolve(image);
+
+      return new Promise(resolve => {
+        setTimeout(() => resolve(image), 300);
+      });
     }
   };
 };

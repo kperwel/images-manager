@@ -10,7 +10,8 @@ interface MainLayoutProps {
 const ContainerStyled = styled.div``;
 const ContentStyled = styled.div`
   padding: 10px;
-  margin-top: 50px;
+  width: calc(100% / 3 * 2);
+  margin-top: 40px;
 `;
 const TopbarStyled = styled.div`
   position: fixed;
@@ -18,7 +19,11 @@ const TopbarStyled = styled.div`
   z-index: 1;
 `;
 const SidebarStyled = styled.div`
-  margin-top: 50px;
+  margin-top: 40px;
+  position: fixed;
+  right: 0;
+  width: calc(100% / 3);
+  height: 100%;
 `;
 const ContentContainerStyled = styled.div`
   width: 100%;

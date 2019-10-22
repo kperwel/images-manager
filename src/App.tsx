@@ -1,6 +1,7 @@
 import React from "react";
 import { createGlobalStyle } from "styled-components";
 import { Provider } from "react-redux";
+import { useRouteMatch, Route, BrowserRouter as Router } from "react-router-dom";
 
 import configureStore from "./store";
 
@@ -14,17 +15,26 @@ const GlobalStyle = createGlobalStyle`
     font-family: Helvetica, Arial, Sans-Serif;
     background: #e4ebf1;
   }
+
+  #root {
+    min-height: 100vh;
+  }
 `;
 
-const App: React.FC = () => (
+const App: React.FC = () => { 
+  return (
   <Provider store={configureStore()}>
-    <MainLayout
-      renderContent={() => <Grid />}
-      renderSidebar={() => <Details />}
-      renderTopbar={() => <TopBar />}
-    />
+    <Router>
+      <Route path="/:imageId?">
+        <MainLayout
+          renderContent={() => <Grid />}
+          renderSidebar={() => <Details />}
+          renderTopbar={() => <TopBar />}
+        />
+      </Route>
+    </Router>
     <GlobalStyle />
   </Provider>
-);
+)};
 
 export default App;
