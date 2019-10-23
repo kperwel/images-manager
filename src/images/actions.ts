@@ -97,7 +97,7 @@ const renameImageRequest = (
 
 const getImage = (api: Api) => (id: Id) => (dispatch: Dispatch) => {
   dispatch(getImageRequest(id));
-  api
+  return api
     .get(id)
     .then(image => dispatch(getImageSuccess(image)))
     .catch(error => dispatch(getImageError(error)));
@@ -105,7 +105,7 @@ const getImage = (api: Api) => (id: Id) => (dispatch: Dispatch) => {
 
 const getImages = (api: Api) => () => (dispatch: Dispatch) => {
   dispatch(getImagesRequest());
-  api
+  return api
     .list()
     .then(images => dispatch(getImagesSuccess(images)))
     .catch(error => dispatch(getImagesError(error)));
@@ -113,7 +113,7 @@ const getImages = (api: Api) => () => (dispatch: Dispatch) => {
 
 const removeImage = (api: Api) => (id: Id) => (dispatch: Dispatch) => {
   dispatch(removeImageRequest(id));
-  api
+  return api
     .delete(id)
     .then(() => dispatch(removeImageSuccess(id)))
     .catch(error => dispatch(removeImageError(error)));
@@ -121,7 +121,7 @@ const removeImage = (api: Api) => (id: Id) => (dispatch: Dispatch) => {
 
 const renameImage = (api: Api) => (id: Id, newName: string) => (dispatch: Dispatch) => {
   dispatch(renameImageRequest(id, newName));
-  api
+  return api
     .patch(id, { title: newName })
     .then(image => dispatch(renameImageSuccess(image)))
     .catch(error => dispatch(renameImageError(error)));
