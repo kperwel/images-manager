@@ -1,5 +1,5 @@
 import { createMock } from "./mock";
-import { Id, Image } from "../images/types";
+import { Id, Image } from "../manager/types";
 
 /**
  * API MOCKED TO SHOW ASYNC DATA HANDLING

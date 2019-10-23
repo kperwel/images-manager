@@ -1,4 +1,4 @@
-import { Image } from "../images/types";
+import { Image } from "../manager/types";
 
 const titles = [
   "Duis in viverra neque",

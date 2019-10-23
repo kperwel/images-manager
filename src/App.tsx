@@ -9,8 +9,8 @@ import useMedia from "./layout/useMedia";
 import DesktopLayout from "./layout/DesktopLayout";
 import MobileLayout from "./layout/MobileLayout";
 import ScrollTopOnImageChange from "./components/ScrollTopOnImageChange";
-import ImagesGrid from "./images/ImagesGrid";
-import Details from "./images/Details";
+import ImagesGrid from "./manager/ImagesGrid";
+import Details from "./manager/Details";
 import TopBar from "./TopBar";
 
 const GlobalStyle = createGlobalStyle`

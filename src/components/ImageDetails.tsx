@@ -4,7 +4,7 @@ import TextMock from "./TextMock";
 import Button from "./Button";
 import ImageView from "./Image";
 
-import { Image } from "../images/types";
+import { Image } from "../manager/types";
 
 const ImageDetailsContainer = styled.div`
   ${({ isRemoving }: { isRemoving: boolean }) =>
