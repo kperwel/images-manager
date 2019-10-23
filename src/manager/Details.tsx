@@ -58,8 +58,8 @@ const Details = () => {
   }, [image, setEditing]);
 
 
-  const isFetchingFullyDone =
-    LIST_STATUS.READY || imageStatus === IMAGE_STATUS.READY;
+  const isFetchingFullyDone : boolean =
+    listStatus === LIST_STATUS.READY || imageStatus === IMAGE_STATUS.READY;
   useEffect(() => {
     if (!image && isFetchingFullyDone) {
       // if no image found and fetch status is ready, redirect to homeapge
