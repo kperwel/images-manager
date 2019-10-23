@@ -6,7 +6,6 @@ import { Route, BrowserRouter as Router } from "react-router-dom";
 import configureStore from "./store";
 
 import DesktopLayout from "./layout/DesktopLayout";
-import MobileLayout from "./layout/MobileLayout";
 import ImagesGrid from "./images/ImagesGrid";
 import Details from "./images/Details";
 import TopBar from "./TopBar";
