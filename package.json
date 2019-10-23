@@ -52,6 +52,7 @@
     "@types/react-router": "^5.1.2",
     "@types/react-router-dom": "^5.1.0",
     "@types/styled-components": "^4.1.19",
+    "awesome-typescript-loader": "^5.2.1",
     "babel-loader": "^8.0.6"
   }
 }

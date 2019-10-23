@@ -1,10 +1,25 @@
 import React, { useState, useEffect } from "react";
-import styled, { css } from "styled-components";
+import styled, { css, keyframes } from "styled-components";
+
+const pulse = keyframes`
+  0% {
+    transform: translateX(-45%);
+  }
+
+  50% {
+    transform: translateX(-55%);
+  }
+  
+  100% {
+    transform: translateX(-45%);
+  }
+`;
+
 
 const progressStyles = ({ progress }: ProgressIndicatorStyledProps) =>
   progress
     ? css`
-        transform: translateX(-30%);
+        animation: ${pulse} 2s ease-in-out infinite;
         opacity: 1;
       `
     : css`
