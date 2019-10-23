@@ -8,6 +8,8 @@ interface ImageProps {
 
 const ImageStyled = styled.img`
     width: 100%;
+    object-fit: cover;
+    flex: 0;
 `;
 
 const Image = ({url, title}: ImageProps ) => <ImageStyled alt={title} title={title} src={url}/>;

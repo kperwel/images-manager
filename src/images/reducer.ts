@@ -85,7 +85,7 @@ export function imageReducer(
       return {
         ...state,
         status: { ...state.status, [action.payload.id]: IMAGE_STATUS.READY },
-        items: { ...state.items, [action.payload.id]: action.payload }
+        items: { ...state.items, [action.payload.id]: { ...action.payload }}
       };
     case RENAME_IMAGE_ERROR:
       return { ...state };

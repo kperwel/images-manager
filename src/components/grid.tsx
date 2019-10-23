@@ -8,14 +8,13 @@ interface GridProps<T> {
 }
 
 const GridStyled = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  margin: -10px;
+  column-count: 3;
 `;
 
 const GridItemStyled = styled.div`
-  padding: 10px;
-  width: calc(100% / 3);
+  margin-bottom: 15px;
+  padding: 2px;
+  break-inside: avoid-column;
 `;
 
 function Grid<T extends {}>({ items, renderItem }: GridProps<T>) {

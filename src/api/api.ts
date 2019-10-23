@@ -17,7 +17,7 @@ export const createApi = (mock = createMock()): Api => {
     },
     list: () => {
       return new Promise(resolve => {
-        setTimeout(() => resolve(mock), 300);
+        setTimeout(() => resolve(mock), 1000);
       });
     },
     delete: (id: Id) => {
@@ -25,7 +25,7 @@ export const createApi = (mock = createMock()): Api => {
       mock = mock.filter(i => i !== image);
 
       return new Promise(resolve => {
-        setTimeout(() => resolve(image), 300);
+        setTimeout(() => resolve(image), 1000);
       });
     },
     patch: (id: Id, properties: Partial<Image>) => {
@@ -33,7 +33,7 @@ export const createApi = (mock = createMock()): Api => {
       Object.assign(image, properties);
 
       return new Promise(resolve => {
-        setTimeout(() => resolve(image), 300);
+        setTimeout(() => resolve(image), 1000);
       });
     }
   };

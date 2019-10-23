@@ -19,11 +19,12 @@ const TopbarStyled = styled.div`
   z-index: 1;
 `;
 const SidebarStyled = styled.div`
-  margin-top: 40px;
   position: fixed;
   right: 0;
   width: calc(100% / 3);
-  height: 100%;
+  top: 35px;
+  bottom: 0;
+  overflow-y: auto;
 `;
 const ContentContainerStyled = styled.div`
   width: 100%;

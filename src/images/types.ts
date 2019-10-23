@@ -35,6 +35,7 @@ export enum LIST_STATUS {
 export interface Image {
   id: Id;
   url: string;
+  thumb_url: string;
   title: string;
   description: string;
 }

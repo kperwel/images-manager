@@ -3,7 +3,7 @@ import styled, { css } from "styled-components";
 
 interface TileProps {
   children: React.ReactNode;
-  title: string;
+  title: React.ReactNode;
   onClick?: () => void;
   selected?: boolean;
 }
@@ -23,6 +23,9 @@ const TileStyled = styled.article`
 
 const TitleStyled = styled.h2`
   font-size: 13px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 `;
 
 const DescriptionStyled = styled.div`
