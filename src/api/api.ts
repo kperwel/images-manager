@@ -1,6 +1,9 @@
 import { createMock } from "./mock";
 import { Id, Image } from "../images/types";
 
+/**
+ * API MOCKED TO SHOW ASYNC DATA HANDLING
+ */
 export interface Api {
   get: (id: Id) => Promise<Image>;
   list: () => Promise<Image[]>;

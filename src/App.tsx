@@ -1,12 +1,12 @@
 import React from "react";
 import { createGlobalStyle } from "styled-components";
 import { Provider } from "react-redux";
-import { useRouteMatch, Route, BrowserRouter as Router } from "react-router-dom";
+import { Route, BrowserRouter as Router } from "react-router-dom";
 
 import configureStore from "./store";
 
 import MainLayout from "./layout/MainLayout";
-import Grid from "./images/Grid";
+import Grid from "./images/ImagesGrid";
 import Details from "./images/Details";
 import TopBar from "./TopBar";
 

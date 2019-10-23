@@ -4,7 +4,7 @@ import styled, { css } from "styled-components";
 const progressStyles = ({ progress }: ProgressIndicatorStyledProps) =>
   progress
     ? css`
-        transform: translateX(-50%);
+        transform: translateX(-30%);
         opacity: 1;
       `
     : css`

@@ -1,8 +1,8 @@
-import React, { useEffect, useCallback, useState, useRef } from "react";
+import React, { useEffect, useCallback, useState } from "react";
 import styled from "styled-components";
 import { useRouteMatch, useHistory } from "react-router-dom";
-
 import { useSelector, useDispatch } from "react-redux";
+
 import { IMAGE_STATUS, LIST_STATUS } from "./types";
 import { createActions } from "./actions";
 import { createApi } from "../api/api";
@@ -37,13 +37,13 @@ const Details = () => {
 
   const remove = useCallback(() => {
     selectedId && dispatch(removeImage(selectedId));
-  }, [selectedId]);
+  }, [selectedId, removeImage, dispatch]);
 
   const rename = useCallback(
     (name: string) => {
       selectedId && dispatch(renameImage(selectedId, name));
     },
-    [selectedId]
+    [selectedId, renameImage, dispatch]
   );
 
   useEffect(() => {
@@ -55,7 +55,7 @@ const Details = () => {
   useEffect(() => {
     // If image has changed, change turn off editing mode
     setEditing(false);
-  }, [image]);
+  }, [image, setEditing]);
 
 
   const isFetchingFullyDone =

@@ -8,13 +8,13 @@ import ImageView from "../components/Image";
 import Tile from "../components/Tile";
 import ProgressIndicator from "../components/Progress";
 
-import { ImagesState, LIST_STATUS } from "./types";
+import { LIST_STATUS } from "./types";
 
-import { createActions } from "../images/actions";
+import { createActions } from "./actions";
 import { createApi } from "../api/api";
 import { getImages, getListStatus } from "./selectors";
 
-const List = () => {
+const ImagesGrid = () => {
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -61,4 +61,4 @@ const List = () => {
   );
 };
 
-export default List;
+export default ImagesGrid;

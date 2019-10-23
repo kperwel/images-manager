@@ -36,7 +36,6 @@ export function imageReducer(
   state = initialState,
   action: ImageActionTypes
 ): ImagesState {
-    console.log(action.type);
   switch (action.type) {
     case GET_IMAGE_REQUEST:
       return {
@@ -49,11 +48,19 @@ export function imageReducer(
       return {
         ...state,
         status: {
+          ...state.status,
           [action.payload.id]: IMAGE_STATUS.READY
+        },
+        items: {
+          ...state.items,
+          [action.payload.id]: action.payload
         }
       };
     case GET_IMAGE_ERROR:
-      return { ...state };
+      return {
+        ...state,
+        status: { ...state.status, [action.payload]: IMAGE_STATUS.READY }
+      };
     case GET_IMAGES_REQUEST:
       return { ...state, listStatus: LIST_STATUS.FETCHING };
     case GET_IMAGES_SUCCESS:
@@ -71,9 +78,13 @@ export function imageReducer(
         status: { ...state.status, [action.payload]: IMAGE_STATUS.REMOVING }
       };
     case REMOVE_IMAGE_SUCCESS:
-            const newItems = { ...state.items };
-            delete newItems[action.payload];
-      return { ...state, list: state.list.filter(id => id !== action.payload), items: newItems };
+      const newItems = { ...state.items };
+      delete newItems[action.payload];
+      return {
+        ...state,
+        list: state.list.filter(id => id !== action.payload),
+        items: newItems
+      };
     case REMOVE_IMAGE_ERROR:
       return { ...state };
     case RENAME_IMAGE_REQUEST:
@@ -85,7 +96,7 @@ export function imageReducer(
       return {
         ...state,
         status: { ...state.status, [action.payload.id]: IMAGE_STATUS.READY },
-        items: { ...state.items, [action.payload.id]: { ...action.payload }}
+        items: { ...state.items, [action.payload.id]: { ...action.payload } }
       };
     case RENAME_IMAGE_ERROR:
       return { ...state };
