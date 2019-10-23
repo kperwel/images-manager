@@ -31,11 +31,13 @@ const EditableItemStyled = styled.div`
   padding: 10px 0;
   align-items: flex-start;
   align-self: flex-end;
+  flex-wrap: wrap;
 
   input {
     background: #fff;
     padding: 3px 10px;
     border: 1px solid #000;
+    align-self: flex-end;
   }
 `;
 
