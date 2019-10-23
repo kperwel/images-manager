@@ -1,7 +1,7 @@
 import React from "react";
 import styled, { css } from "styled-components";
 
-const MockedLine = styled.div`
+const MockedLine = styled.span`
   height: 1em;
   width: 100%;
   background: #aaa;

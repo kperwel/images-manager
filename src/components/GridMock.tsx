@@ -11,14 +11,16 @@ const MockedImage = styled.div`
   display: inline-block;
 `;
 
-interface TextMockProps {
-  numberOfTiles: number;
+interface GridMockProps {
+  numberOfTiles?: number;
+  columns?: number,
 }
 
-const GridMock = ({ numberOfTiles = 1 }: TextMockProps) => {
+const GridMock = ({ numberOfTiles = 1, columns = 3 }: GridMockProps) => {
   return (
     <Grid
       items={Array(numberOfTiles).fill(null).map((_, key) => key)}
+      columns={columns}
       getKey={id => id.toString()}
       renderItem={() => (
         <Tile title={<TextMock />}>

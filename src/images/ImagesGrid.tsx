@@ -31,14 +31,16 @@ const ImagesGrid = ({ columns }: ImagesGridProps) => {
   const selectedId = match ? match.params.imageId : null;
 
   useEffect(() => {
-    dispatch(actions.getImages());
-  }, []);
+    if (listStatus !== LIST_STATUS.READY) {
+      dispatch(actions.getImages());
+    }
+  }, [listStatus]);
 
   if (listStatus === LIST_STATUS.FETCHING || listStatus === LIST_STATUS.INIT) {
     return (
       <>
         <ProgressIndicator inProgress={listStatus === LIST_STATUS.FETCHING} />
-        <GridMock numberOfTiles={6} />
+        <GridMock numberOfTiles={6} columns={columns} />
       </>
     );
   }

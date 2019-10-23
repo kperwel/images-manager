@@ -5,7 +5,10 @@ import { Route, BrowserRouter as Router } from "react-router-dom";
 
 import configureStore from "./store";
 
+import useMedia from "./layout/useMedia";
 import DesktopLayout from "./layout/DesktopLayout";
+import MobileLayout from "./layout/MobileLayout";
+import ScrollTopOnImageChange from "./components/ScrollTopOnImageChange";
 import ImagesGrid from "./images/ImagesGrid";
 import Details from "./images/Details";
 import TopBar from "./TopBar";
@@ -17,20 +20,39 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-const App: React.FC = () => { 
+const App: React.FC = () => {
+  const mobile = useMedia(
+    ["(max-width: 601px)", "(min-width: 600px)"],
+    [true, false],
+    true
+  );
   return (
-  <Provider store={configureStore()}>
-    <Router>
-      <Route path="/:imageId?">
-        <DesktopLayout
-          renderContent={() => <ImagesGrid columns={3} />}
-          renderSidebar={() => <Details />}
-          renderTopbar={() => <TopBar />}
-        />
-      </Route>
-    </Router>
-    <GlobalStyle />
-  </Provider>
-)};
+    <Provider store={configureStore()}>
+      <Router>
+        <Route path="/:imageId?">
+          {mobile ? (
+            <MobileLayout
+              renderContent={() => (
+                <>
+                  <ScrollTopOnImageChange />
+                  <Details />
+                  <ImagesGrid columns={1} />
+                </>
+              )}
+              renderTopbar={() => <TopBar />}
+            />
+          ) : (
+            <DesktopLayout
+              renderContent={() => <ImagesGrid columns={3} />}
+              renderSidebar={() => <Details />}
+              renderTopbar={() => <TopBar />}
+            />
+          )}
+        </Route>
+      </Router>
+      <GlobalStyle />
+    </Provider>
+  );
+};
 
 export default App;
