@@ -30,7 +30,7 @@ describe("actions", () => {
   describe("Get all images", () => {
     const { getImages } = createActions(mockApi);
 
-    it("Should dispatch GET_IMAGES_SUCCESS on api.list reolve", () => {
+    it("Should dispatch GET_IMAGES_SUCCESS action on api.list reolve", () => {
       store.dispatch(getImages() as any).then(() => {
         expect(store.getActions()).toContainEqual({
           type: GET_IMAGES_SUCCESS,
