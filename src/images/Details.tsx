@@ -14,7 +14,7 @@ import { getImageStatus, getListStatus, getImage } from "./selectors";
 const DetailsStyled = styled.div`
   background: #eee;
   height: 100%;
-  padding: 20px;
+  padding: 0 20px 10px;
   display: flex;
   flex-direction: column;
 `;
@@ -46,17 +46,20 @@ const Details = () => {
     [selectedId]
   );
 
-  const isFetchingFullyDone =
-    LIST_STATUS.READY || imageStatus === IMAGE_STATUS.READY;
-
   useEffect(() => {
     if (selectedId) {
+      // Start fetching details on new image selection
       dispatch(fetchImage(selectedId));
     }
   }, [selectedId]);
   useEffect(() => {
+    // If image has changed, change turn off editing mode
     setEditing(false);
   }, [image]);
+
+
+  const isFetchingFullyDone =
+    LIST_STATUS.READY || imageStatus === IMAGE_STATUS.READY;
   useEffect(() => {
     if (!image && isFetchingFullyDone) {
       // if no image found and fetch status is ready, redirect to homeapge
@@ -80,6 +83,7 @@ const Details = () => {
         <ImageDetails
           image={image}
           isEditing={editing}
+          isRemoving={imageStatus === IMAGE_STATUS.REMOVING}
           isFetchingDescription={imageStatus === IMAGE_STATUS.FETCHING}
           onEditRequest={() => setEditing(true)}
           onRemoveRequest={remove}

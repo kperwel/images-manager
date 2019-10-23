@@ -12,6 +12,10 @@ const outlineStyle = css`
   outline: 2px dashed red;
 `;
 
+const clickableStyle = css`
+  cursor: pointer;
+`;
+
 const TileStyled = styled.article`
   background: #fff;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
@@ -19,6 +23,9 @@ const TileStyled = styled.article`
 
   ${({ selected }: Pick<TileProps, "selected">) =>
     selected ? outlineStyle : ""}
+
+  ${({ onClick, selected }: Pick<TileProps, "onClick" | "selected">) =>
+    onClick && !selected ? clickableStyle : ""}
 `;
 
 const TitleStyled = styled.h2`

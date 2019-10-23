@@ -5,9 +5,11 @@ const progressStyles = ({ progress }: ProgressIndicatorStyledProps) =>
   progress
     ? css`
         transform: translateX(-50%);
+        opacity: 1;
       `
     : css`
         transform: translateX(-100%);
+        opacity: 0;
       `;
 
 const doneStyles = ({ done }: ProgressIndicatorStyledProps) =>
@@ -33,7 +35,7 @@ const Bar = styled.div`
     top: 0;
     left: 0;
     height: 100%;
-    transition: transform 600ms, opacity 600ms;
+    transition: transform 300ms, opacity 600ms;
 
     ${progressStyles}
     ${doneStyles}

@@ -22,7 +22,7 @@ const SidebarStyled = styled.div`
   position: fixed;
   right: 0;
   width: calc(100% / 3);
-  top: 35px;
+  top: 44px;
   bottom: 0;
   overflow-y: auto;
 `;

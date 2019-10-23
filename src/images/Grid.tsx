@@ -15,16 +15,18 @@ import { createApi } from "../api/api";
 import { getImages, getListStatus } from "./selectors";
 
 const List = () => {
-  const images = useSelector(getImages);
-  const listStatus = useSelector(getListStatus);
   const dispatch = useDispatch();
   const history = useHistory();
+
+  const images = useSelector(getImages);
+  const listStatus = useSelector(getListStatus);
+
   const actions = createActions(createApi());
 
-  const match = useRouteMatch<{imageId: string}>();
+  const match = useRouteMatch<{ imageId: string }>();
   const selectedId = match ? match.params.imageId : null;
 
-  useEffect(()=> {
+  useEffect(() => {
     dispatch(actions.getImages());
   }, []);
 
@@ -34,19 +36,28 @@ const List = () => {
         <ProgressIndicator inProgress={listStatus === LIST_STATUS.FETCHING} />
         <GridMock numberOfTiles={6} />
       </>
-    )
+    );
   }
 
   return (
-    <Grid
-      items={images}
-      getKey={image => image.id}
-      renderItem={image => (
-        <Tile title={image.title} selected={image.id === selectedId} onClick={() => { history.push(`/${image.id}`) }}>
-          <ImageView url={image.thumb_url} title={image.title} />
-        </Tile>
-      )}
-    />
+    <>
+      <ProgressIndicator inProgress={false} />
+      <Grid
+        items={images}
+        getKey={image => image.id}
+        renderItem={image => (
+          <Tile
+            title={image.title}
+            selected={image.id === selectedId}
+            onClick={() => {
+              history.push(`/${image.id}`);
+            }}
+          >
+            <ImageView url={image.thumb_url} title={image.title} />
+          </Tile>
+        )}
+      />
+    </>
   );
 };
 

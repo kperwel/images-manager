@@ -1,10 +1,19 @@
 import React, { useRef } from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import TextMock from "./TextMock";
 import Button from "./Button";
 import ImageView from "./Image";
 
 import { Image } from "../images/types";
+
+const ImageDetailsContainer = styled.div`
+  ${({ isRemoving }: { isRemoving: boolean }) =>
+    isRemoving
+      ? css`
+          opacity: 0.5;
+        `
+      : ""}
+`;
 
 const DescriptionStyled = styled.p`
   margin: 20px 0;
@@ -70,6 +79,7 @@ const EditableTitle = ({
 interface ImageDetailsProps {
   image: Image;
   isEditing: boolean;
+  isRemoving: boolean;
   onEditRequest: () => void;
   onRenameRequest: (newName: string) => void;
   onRemoveRequest: () => void;
@@ -80,12 +90,13 @@ const ImageDetails = ({
   image,
   isFetchingDescription,
   isEditing = false,
+  isRemoving = false,
   onEditRequest,
   onRemoveRequest,
   onRenameRequest
 }: ImageDetailsProps) => {
   return (
-    <>
+    <ImageDetailsContainer isRemoving={isRemoving}>
       <EditableTitle
         editing={isEditing}
         toggleEditing={onEditRequest}
@@ -100,7 +111,7 @@ const ImageDetails = ({
       <BottomMenuStyled>
         <Button onClick={onRemoveRequest}>Delete</Button>
       </BottomMenuStyled>
-    </>
+    </ImageDetailsContainer>
   );
 };
 
