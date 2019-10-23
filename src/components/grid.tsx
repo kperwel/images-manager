@@ -1,14 +1,18 @@
 import React, { ReactNode } from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 interface GridProps<T> {
+  columns?: number;
   items: Array<T>;
   renderItem: (item: T) => ReactNode;
   getKey: (item: T) => string;
 }
 
 const GridStyled = styled.div`
-  column-count: 3;
+  ${({ columns }: { columns: number }) =>
+    css`
+      column-count: ${columns};
+    `}
 `;
 
 const GridItemStyled = styled.div`
@@ -17,9 +21,9 @@ const GridItemStyled = styled.div`
   break-inside: avoid-column;
 `;
 
-function Grid<T extends {}>({ items, renderItem }: GridProps<T>) {
+function Grid<T extends {}>({ items, renderItem, columns = 3 }: GridProps<T>) {
   return (
-    <GridStyled>
+    <GridStyled columns={columns}>
       {items.map((item, index) => (
         <GridItemStyled key={index}>{renderItem(item)}</GridItemStyled>
       ))}

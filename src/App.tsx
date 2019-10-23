@@ -5,8 +5,9 @@ import { Route, BrowserRouter as Router } from "react-router-dom";
 
 import configureStore from "./store";
 
-import MainLayout from "./layout/MainLayout";
-import Grid from "./images/ImagesGrid";
+import DesktopLayout from "./layout/DesktopLayout";
+import MobileLayout from "./layout/MobileLayout";
+import ImagesGrid from "./images/ImagesGrid";
 import Details from "./images/Details";
 import TopBar from "./TopBar";
 
@@ -15,10 +16,6 @@ const GlobalStyle = createGlobalStyle`
     font-family: Helvetica, Arial, Sans-Serif;
     background: #e4ebf1;
   }
-
-  #root {
-    min-height: 100vh;
-  }
 `;
 
 const App: React.FC = () => { 
@@ -26,8 +23,8 @@ const App: React.FC = () => {
   <Provider store={configureStore()}>
     <Router>
       <Route path="/:imageId?">
-        <MainLayout
-          renderContent={() => <Grid />}
+        <DesktopLayout
+          renderContent={() => <ImagesGrid columns={3} />}
           renderSidebar={() => <Details />}
           renderTopbar={() => <TopBar />}
         />

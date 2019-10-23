@@ -14,7 +14,11 @@ import { createActions } from "./actions";
 import { createApi } from "../api/api";
 import { getImages, getListStatus } from "./selectors";
 
-const ImagesGrid = () => {
+interface ImagesGridProps {
+  columns?: number;
+}
+
+const ImagesGrid = ({ columns }: ImagesGridProps) => {
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -45,6 +49,7 @@ const ImagesGrid = () => {
       <Grid
         items={images}
         getKey={image => image.id}
+        columns={columns}
         renderItem={image => (
           <Tile
             title={image.title}

@@ -7,7 +7,6 @@ interface MainLayoutProps {
   renderTopbar: () => ReactNode;
 }
 
-const ContainerStyled = styled.div``;
 const ContentStyled = styled.div`
   padding: 10px;
   width: calc(100% / 3 * 2);
@@ -36,13 +35,13 @@ const MainLayout = ({
   renderSidebar,
   renderTopbar
 }: MainLayoutProps) => (
-  <ContainerStyled>
+  <div>
     <TopbarStyled>{renderTopbar()}</TopbarStyled>
     <ContentContainerStyled>
       <ContentStyled>{renderContent()}</ContentStyled>
       <SidebarStyled>{renderSidebar()}</SidebarStyled>
     </ContentContainerStyled>
-  </ContainerStyled>
+  </div>
 );
 
 export default MainLayout;
