@@ -2,9 +2,9 @@ import React, { useCallback } from "react";
 import { useSelector, shallowEqual } from "react-redux";
 import { useRouteMatch, useHistory } from "react-router";
 
-import ImageView from "../components/Image";
-import Tile from "../components/Tile";
-import { getImage } from "./selectors";
+import ImageView from "../../components/Image";
+import Tile from "../../components/Tile";
+import { getImage } from "../selectors";
 
 interface ImageTileProps {
   id: string;
