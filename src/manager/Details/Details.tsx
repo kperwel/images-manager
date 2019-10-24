@@ -3,8 +3,7 @@ import styled from "styled-components";
 import { useSelector, shallowEqual } from "react-redux";
 
 import { IMAGE_STATUS } from "../types";
-import ImageDetails from "../../components/ImageDetails";
-import ProgressIndicator from "../../components/Progress";
+import { ImageDetails, ProgressIndicator } from "../../components";
 
 import { getImageStatus, getImage } from "../selectors";
 

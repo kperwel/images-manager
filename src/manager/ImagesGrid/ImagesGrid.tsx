@@ -1,10 +1,8 @@
 import React from "react";
 import { useSelector } from "react-redux";
 
-import Grid from "../../components/Grid";
-import GridMock from "../../components/GridMock";
+import { Grid, GridMock, ProgressIndicator } from "../../components";
 import ImageTile from "../ImageTile/ImageTile";
-import ProgressIndicator from "../../components/Progress";
 
 import { LIST_STATUS } from "../types";
 

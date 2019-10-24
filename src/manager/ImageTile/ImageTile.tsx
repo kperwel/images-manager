@@ -2,8 +2,7 @@ import React, { useCallback } from "react";
 import { useSelector, shallowEqual } from "react-redux";
 import { useRouteMatch, useHistory } from "react-router";
 
-import ImageView from "../../components/Image";
-import Tile from "../../components/Tile";
+import { Image, Tile } from "../../components";
 import { getImage } from "../selectors";
 
 interface ImageTileProps {
@@ -26,7 +25,7 @@ const ImageTile = ({ id }: ImageTileProps) => {
       selected={image.id === selectedId}
       onClick={onClickCallback}
     >
-      <ImageView url={image.thumb_url} title={image.title} />
+      <Image url={image.thumb_url} title={image.title} />
     </Tile>
   );
 };
