@@ -12,7 +12,7 @@ import {
   useRenameHandling,
   useDetailsFetchingOnImageSelection,
   useHomepageRedirectionOnMissingImage
-} from "./hooks";
+} from "./detailsHooks";
 import { useSelectedId } from "../commonHooks";
 
 const DetailsStyled = styled.div`

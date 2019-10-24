@@ -6,7 +6,7 @@ import ImageTile from "../ImageTile/ImageTile";
 
 import { LIST_STATUS } from "../types";
 
-import { useInitialListFetch } from "./hooks";
+import { useInitialListFetch } from "./imagesGridHooks";
 import { getListStatus, getImagesIds } from "../selectors";
 
 interface ImagesGridProps {
