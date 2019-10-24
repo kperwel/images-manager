@@ -4,8 +4,7 @@ import { useRouteMatch, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
 import { IMAGE_STATUS, LIST_STATUS } from "./types";
-import { createActions } from "./actions";
-import { createApi } from "../api/api";
+import actions from "./actions";
 import ImageDetails from "../components/ImageDetails";
 import ProgressIndicator from "../components/Progress";
 
@@ -24,9 +23,7 @@ const Details = () => {
   const history = useHistory();
   const dispatch = useDispatch();
 
-  const { removeImage, renameImage, getImage: fetchImage } = createActions(
-    createApi()
-  );
+  const { removeImage, renameImage, getImage: fetchImage } = actions;
 
   const selectedId = match ? match.params.imageId : null;
   const [editing, setEditing] = useState(false);
@@ -37,13 +34,13 @@ const Details = () => {
 
   const remove = useCallback(() => {
     selectedId && dispatch(removeImage(selectedId));
-  }, [selectedId, removeImage, dispatch]);
+  }, [selectedId]);
 
   const rename = useCallback(
     (name: string) => {
       selectedId && dispatch(renameImage(selectedId, name));
     },
-    [selectedId, renameImage, dispatch]
+    [selectedId]
   );
 
   useEffect(() => {

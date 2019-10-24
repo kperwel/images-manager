@@ -27,7 +27,7 @@ import {
 } from "./types";
 
 import { Image, Id, Error } from "./types";
-import { Api } from "../api/api";
+import { Api, createApi } from "../api/api";
 import { Dispatch } from "redux";
 
 const getImageSuccess = (image: Image): GetImageSuccessAction => ({
@@ -119,7 +119,9 @@ const removeImage = (api: Api) => (id: Id) => (dispatch: Dispatch) => {
     .catch(error => dispatch(removeImageError(error)));
 };
 
-const renameImage = (api: Api) => (id: Id, newName: string) => (dispatch: Dispatch) => {
+const renameImage = (api: Api) => (id: Id, newName: string) => (
+  dispatch: Dispatch
+) => {
   dispatch(renameImageRequest(id, newName));
   return api
     .patch(id, { title: newName })
@@ -133,3 +135,5 @@ export const createActions = (api: Api) => ({
   removeImage: removeImage(api),
   renameImage: renameImage(api)
 });
+
+export default createActions(createApi());

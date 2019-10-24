@@ -8,8 +8,7 @@ import ProgressIndicator from "../components/Progress";
 
 import { LIST_STATUS } from "./types";
 
-import { createActions } from "./actions";
-import { createApi } from "../api/api";
+import actions from "./actions";
 import { getListStatus, getImagesIds } from "./selectors";
 
 interface ImagesGridProps {
@@ -21,8 +20,6 @@ const ImagesGrid = ({ columns }: ImagesGridProps) => {
 
   const ids = useSelector(getImagesIds);
   const listStatus = useSelector(getListStatus);
-
-  const actions = createActions(createApi());
 
   useEffect(() => {
     if (listStatus !== LIST_STATUS.READY) {

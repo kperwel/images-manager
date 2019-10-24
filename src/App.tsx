@@ -11,7 +11,7 @@ import MobileLayout from "./layout/MobileLayout";
 import ScrollTopOnImageChange from "./components/ScrollTopOnImageChange";
 import ImagesGrid from "./manager/ImagesGrid";
 import Details from "./manager/Details";
-import TopBar from "./TopBar";
+import TopBar from "./manager/TopBar";
 
 const GlobalStyle = createGlobalStyle`
   body {

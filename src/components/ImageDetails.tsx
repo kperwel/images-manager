@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useCallback } from "react";
 import styled, { css } from "styled-components";
 import TextMock from "./TextMock";
 import Button from "./Button";
@@ -55,23 +55,21 @@ const EditableTitle = ({
   toggleEditing
 }: EditableTitleProps) => {
   const inputEl = useRef<HTMLInputElement>(null);
+  const onSaveCallback = useCallback(
+    () => onSave(inputEl.current ? inputEl.current.value : children),
+    [inputEl.current]
+  );
   return (
     <EditableItemStyled>
       {editing ? (
         <>
           <input ref={inputEl} type="text" defaultValue={children} />
-          <Button
-            onClick={() =>
-              onSave(inputEl.current ? inputEl.current.value : children)
-            }
-          >
-            Save
-          </Button>
+          <Button onClick={onSaveCallback}>Save</Button>
         </>
       ) : (
         <>
           <h2>{children}</h2>
-          <Button onClick={() => toggleEditing()}>Edit</Button>
+          <Button onClick={toggleEditing}>Edit</Button>
         </>
       )}
     </EditableItemStyled>
@@ -80,17 +78,17 @@ const EditableTitle = ({
 
 interface ImageDetailsProps {
   image: Image;
-  isEditing: boolean;
-  isRemoving: boolean;
+  isEditing?: boolean;
+  isRemoving?: boolean;
   onEditRequest: () => void;
   onRenameRequest: (newName: string) => void;
   onRemoveRequest: () => void;
-  isFetchingDescription: boolean;
+  isFetchingDescription?: boolean;
 }
 
 const ImageDetails = ({
   image,
-  isFetchingDescription,
+  isFetchingDescription = false,
   isEditing = false,
   isRemoving = false,
   onEditRequest,
