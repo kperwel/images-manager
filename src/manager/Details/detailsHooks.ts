@@ -1,4 +1,4 @@
-import { useDispatch, shallowEqual, useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useState, useCallback, useEffect } from "react";
 import { useHistory } from "react-router";
 import { IMAGE_STATUS, LIST_STATUS } from "../types";
@@ -11,7 +11,7 @@ export function useRenameHandling() {
   const dispatch = useDispatch();
   const selectedId = useSelectedId();
   const [editing, setEditing] = useState(false);
-  const image = useSelector(getImage(selectedId), shallowEqual);
+  const image = useSelector(getImage(selectedId));
 
   const rename = useCallback(
     (name: string) => {
@@ -53,7 +53,7 @@ export function useHomepageRedirectionOnMissingImage() {
   const selectedId = useSelectedId();
   const imageStatus = useSelector(getImageStatus(selectedId));
   const listStatus = useSelector(getListStatus);
-  const image = useSelector(getImage(selectedId), shallowEqual);
+  const image = useSelector(getImage(selectedId));
   const history = useHistory();
 
   const isFetchingFullyDone: boolean =

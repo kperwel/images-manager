@@ -1,5 +1,5 @@
 import React, { useCallback } from "react";
-import { useSelector, shallowEqual } from "react-redux";
+import { useSelector } from "react-redux";
 import { useRouteMatch, useHistory } from "react-router";
 
 import { Image, Tile } from "../../components";
@@ -11,7 +11,7 @@ interface ImageTileProps {
 
 const ImageTile = ({ id }: ImageTileProps) => {
   const history = useHistory();
-  const image = useSelector(getImage(id), shallowEqual)!;
+  const image = useSelector(getImage(id))!;
 
   const match = useRouteMatch<{ imageId: string }>();
   const selectedId = match ? match.params.imageId : null;

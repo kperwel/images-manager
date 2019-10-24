@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { useSelector, shallowEqual } from "react-redux";
+import { useSelector } from "react-redux";
 
 import { IMAGE_STATUS } from "../types";
 import { ImageDetails, ProgressIndicator } from "../../components";
@@ -27,7 +27,7 @@ const Details = () => {
   const selectedId = useSelectedId();
 
   const imageStatus = useSelector(getImageStatus(selectedId));
-  const image = useSelector(getImage(selectedId), shallowEqual);
+  const image = useSelector(getImage(selectedId));
 
   const remove = useRemoveCallback();
   const { rename, editing, turnOnEditing } = useRenameHandling();
