@@ -1,7 +1,7 @@
 import React, { useEffect, useCallback, useState } from "react";
 import styled from "styled-components";
 import { useRouteMatch, useHistory } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector, useDispatch, shallowEqual } from "react-redux";
 
 import { IMAGE_STATUS, LIST_STATUS } from "./types";
 import actions from "./actions";
@@ -30,17 +30,17 @@ const Details = () => {
 
   const imageStatus = useSelector(getImageStatus(selectedId));
   const listStatus = useSelector(getListStatus);
-  const image = useSelector(getImage(selectedId));
+  const image = useSelector(getImage(selectedId), shallowEqual);
 
   const remove = useCallback(() => {
     selectedId && dispatch(removeImage(selectedId));
-  }, [selectedId]);
+  }, [selectedId, removeImage, dispatch]);
 
   const rename = useCallback(
     (name: string) => {
       selectedId && dispatch(renameImage(selectedId, name));
     },
-    [selectedId]
+    [selectedId, renameImage, dispatch]
   );
 
   useEffect(() => {
@@ -48,12 +48,11 @@ const Details = () => {
       // Start fetching details on new image selection
       dispatch(fetchImage(selectedId));
     }
-  }, [selectedId]);
+  }, [fetchImage, selectedId, dispatch]);
   useEffect(() => {
     // If image has changed, change turn off editing mode
     setEditing(false);
   }, [image]);
-
 
   const isFetchingFullyDone : boolean =
     listStatus === LIST_STATUS.READY || imageStatus === IMAGE_STATUS.READY;
@@ -62,7 +61,7 @@ const Details = () => {
       // if no image found and fetch status is ready, redirect to homeapge
       history.push("/");
     }
-  }, [image, imageStatus, listStatus]);
+  }, [image, history, isFetchingFullyDone]);
 
   return (
     <DetailsStyled>

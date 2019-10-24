@@ -16,7 +16,7 @@ export default function useMedia<T>(
     const handler = () => setValue(getValue);
     mediaQueryLists.forEach(mql => mql.addListener(handler));
     return () => mediaQueryLists.forEach(mql => mql.removeListener(handler));
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return value;
 }

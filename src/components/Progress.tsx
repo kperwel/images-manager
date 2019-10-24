@@ -73,7 +73,7 @@ const ProgressIndicator = ({ inProgress = false }: ProgressIndicatorProps) => {
     if (inProgress) {
       setDone(!done);
     }
-  }, [inProgress]);
+  }, [inProgress]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return <Bar progress={inProgress} done={done && !inProgress} />;
 };

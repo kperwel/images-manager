@@ -15,6 +15,9 @@ interface ImagesGridProps {
   columns?: number;
 }
 
+const renderImageTile = (id: string) => <ImageTile id={id} />;
+const getId = (id: string) => id;
+
 const ImagesGrid = ({ columns }: ImagesGridProps) => {
   const dispatch = useDispatch();
 
@@ -22,10 +25,10 @@ const ImagesGrid = ({ columns }: ImagesGridProps) => {
   const listStatus = useSelector(getListStatus);
 
   useEffect(() => {
-    if (listStatus !== LIST_STATUS.READY) {
+    if (listStatus === LIST_STATUS.INIT) {
       dispatch(actions.getImages());
     }
-  }, [listStatus]);
+  }, [listStatus, dispatch]);
 
   if (listStatus === LIST_STATUS.FETCHING || listStatus === LIST_STATUS.INIT) {
     return (
@@ -41,9 +44,9 @@ const ImagesGrid = ({ columns }: ImagesGridProps) => {
       <ProgressIndicator inProgress={false} />
       <Grid
         items={ids}
-        getKey={id => id}
+        getKey={getId}
         columns={columns}
-        renderItem={id => <ImageTile id={id} />}
+        renderItem={renderImageTile}
       />
     </>
   );

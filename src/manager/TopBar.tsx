@@ -11,8 +11,12 @@ const TopBarStyled = styled.div`
     color: #fff;
     text-decoration: none;
   }
+
+  h1 {
+    font-size: 15px;
+  }
 `;
 
-const TopBar = () => <TopBarStyled><Link to="/">Images Manager</Link></TopBarStyled>;
+const TopBar = () => <TopBarStyled><Link to="/"><h1>Images Manager</h1></Link></TopBarStyled>;
 
 export default TopBar;

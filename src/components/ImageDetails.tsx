@@ -1,4 +1,4 @@
-import React, { useRef, useCallback } from "react";
+import React, { useRef } from "react";
 import styled, { css } from "styled-components";
 import TextMock from "./TextMock";
 import Button from "./Button";
@@ -54,16 +54,12 @@ const EditableTitle = ({
   toggleEditing
 }: EditableTitleProps) => {
   const inputEl = useRef<HTMLInputElement>(null);
-  const onSaveCallback = useCallback(
-    () => onSave(inputEl.current ? inputEl.current.value : children),
-    [inputEl.current] // eslint-disable-line react-hooks/exhaustive-deps
-  );
   return (
     <EditableItemStyled>
       {editing ? (
         <>
           <input ref={inputEl} type="text" defaultValue={children} />
-          <Button onClick={onSaveCallback}>Save</Button>
+          <Button onClick={() => onSave(inputEl.current ? inputEl.current.value : children)}>Save</Button>
         </>
       ) : (
         <>

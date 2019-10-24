@@ -36,7 +36,6 @@ export function imageReducer(
   state = initialState,
   action: ImageActionTypes
 ): ImagesState {
-  console.log(action.type)
   switch (action.type) {
     case GET_IMAGE_REQUEST:
       return {
