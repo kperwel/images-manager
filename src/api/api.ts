@@ -33,10 +33,10 @@ export const createApi = (mock = createMock()): Api => {
     },
     patch: (id: Id, properties: Partial<Image>) => {
       const image = mock.find(i => i.id === id)!;
-      Object.assign({}, image, properties);
+      Object.assign(image, properties);
 
       return new Promise(resolve => {
-        setTimeout(() => resolve(image), 500);
+        setTimeout(() => resolve({...image}), 500);
       });
     }
   };

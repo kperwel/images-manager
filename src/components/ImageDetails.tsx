@@ -26,12 +26,11 @@ const BottomMenuStyled = styled.div`
 
 const EditableItemStyled = styled.div`
   display: flex;
-  width: 100%;
+  width: auto;
   justify-content: space-between;
   padding: 10px 0;
   align-items: flex-start;
   align-self: flex-end;
-  flex-wrap: wrap;
 
   input {
     background: #fff;
@@ -57,7 +56,7 @@ const EditableTitle = ({
   const inputEl = useRef<HTMLInputElement>(null);
   const onSaveCallback = useCallback(
     () => onSave(inputEl.current ? inputEl.current.value : children),
-    [inputEl.current]
+    [inputEl.current] // eslint-disable-line react-hooks/exhaustive-deps
   );
   return (
     <EditableItemStyled>

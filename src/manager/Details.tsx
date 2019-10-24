@@ -52,7 +52,7 @@ const Details = () => {
   useEffect(() => {
     // If image has changed, change turn off editing mode
     setEditing(false);
-  }, [image, setEditing]);
+  }, [image]);
 
 
   const isFetchingFullyDone : boolean =

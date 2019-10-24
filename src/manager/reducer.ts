@@ -36,6 +36,7 @@ export function imageReducer(
   state = initialState,
   action: ImageActionTypes
 ): ImagesState {
+  console.log(action.type)
   switch (action.type) {
     case GET_IMAGE_REQUEST:
       return {
@@ -53,7 +54,7 @@ export function imageReducer(
         },
         items: {
           ...state.items,
-          [action.payload.id]: action.payload
+          [action.payload.id]: {...action.payload}
         }
       };
     case GET_IMAGE_ERROR:
