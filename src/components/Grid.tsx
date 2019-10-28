@@ -21,11 +21,11 @@ const GridItemStyled = styled.div`
   break-inside: avoid-column;
 `;
 
-function Grid<T extends {}>({ items, renderItem, columns = 3 }: GridProps<T>) {
+function Grid<T extends {}>({ items, renderItem, getKey, columns = 3 }: GridProps<T>) {
   return (
     <GridStyled columns={columns}>
       {items.map((item, index) => (
-        <GridItemStyled key={index}>{renderItem(item)}</GridItemStyled>
+        <GridItemStyled key={getKey(item)}>{renderItem(item)}</GridItemStyled>
       ))}
     </GridStyled>
   );
